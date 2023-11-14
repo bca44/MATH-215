@@ -234,7 +234,6 @@ subscribers_6_months = subscriber_vals(np.array([80, 120]), 6)
 # Calculate the proportion of Netflix subscribers to total customers
 netflix_subs6 = subscribers_6_months[0] / np.sum(subscribers_6_months)
 
-
 """
 Problem 9
 
@@ -245,5 +244,4 @@ When ordering your variables to create the matrix, order the ponds as A, B, C, t
 trans_matrix = np.array([[0.80, 0.50, 0.30, 0.20],  # Probabilities for pond A
                          [0.05, 0.20, 0.10, 0.10],  # Probabilities for pond B
                          [0.10, 0.10, 0.30, 0.10],  # Probabilities for pond C
-                         [0.05, 0.20, 0.30, 0.60]]) # Probabilities for pond D
-
+                         [0.05, 0.20, 0.30, 0.60]])  # Probabilities for pond D
