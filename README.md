@@ -1,5 +1,5 @@
 # MATH-215
-MATH 215: Computational Linear Algebra at BYU using Python
+MATH 215: Computational Linear Algebra at BYU
 
 Homework and starter code for this class are given in Google Colab Notebooks, but other IDEs are allowed.
 Starting with Project 9, I took my work off of Google Colab and used PyCharm instead. 
