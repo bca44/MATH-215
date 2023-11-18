@@ -159,7 +159,7 @@ def stoch_eig(P, k):
     return X0
 
 
-def PageRank_cent(n, edge_list, k):  # TODO: Fix this function
+def PageRank_cent(n, edge_list, k):
     """
     Problem 6
     :param n: number of vertices
@@ -183,7 +183,7 @@ def PageRank_cent(n, edge_list, k):  # TODO: Fix this function
     return dominant_eigenvector
 
 
-"""**Problem 7**"""  # TODO: fix this answer
+"""**Problem 7**"""
 
 page_rank = PageRank_cent(499, webpage_data, 100)
 
