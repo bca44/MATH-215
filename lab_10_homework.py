@@ -3,52 +3,53 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import networkx as nx
 
-LabID="Lab10"
+LabID = "Lab10"
 
 try:
-  from graderHelp import ISGRADEPLOT
+    from graderHelp import ISGRADEPLOT
 except ImportError:
-  ISGRADEPLOT = True
+    ISGRADEPLOT = True
 
 """**Enter your name, section number, and BYU NetID**"""
 
 # Enter your first and last names in between the quotation marks.
 
-first_name="Benjamin"
+first_name = "Benjamin"
 
-last_name="Andreasen"
+last_name = "Andreasen"
 
 # Enter your Math 215 section number in between the quotation marks.
 
-section_number="Your Math 215 section number goes here"
+section_number = "Your Math 215 section number goes here"
 
 # Enter your BYU NetID in between the quotation marks.  NOT YOUR BYU ID NUMBER!
 
-BYUNetID="bca44"
+BYUNetID = "bca44"
 
 df = pd.read_csv('Lab10webpagedata.csv')
 webpagedata = df.values
 webpage_data = np.array(webpagedata)
-edges = [(i[0],i[1]) for i in webpagedata]
+edges = [(i[0], i[1]) for i in webpagedata]
 G = nx.from_edgelist(edges)
-nx.draw(G,node_size=75)
+nx.draw(G, node_size=75)
 
-E1=np.array([[0,1],[1,4],[0,2],[0,4],[1,3],[2,0],[2,4],[3,4],[3,2],[3,2]])
-A2= np.array([[0,1,0,0,0,0,0,0],
- [0,0,1,0,0,0,0,0],
- [1,0,0,1,0,1,1,0],
- [0,0,0,0,1,1,0,0],
- [1,0,1,0,0,0,0,0],
- [1,0,0,0,0,0,0,0],
- [0,0,0,0,0,1,0,1],
- [1,0,0,0,0,0,0,0]])
-P = np.array([[0, 1, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [1/4, 0, 0, 1/4, 0, 1/4, 1/4, 0],
-              [0, 0, 0, 0, 1/2, 1/2, 0, 0], [1/2, 0, 1/2, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0],
-              [0, 0, 0, 0, 0, 1/2, 0, 1/2], [1, 0, 0, 0, 0 ,0, 0, 0]])
-E2 = np.array([[0, 1], [1, 2], [2, 0], [2, 3], [2, 5], [2, 6], [3, 5], [3, 4], [4, 2], [4, 0], [5, 0], [6, 5], [6, 7],[7, 0]])
+E1 = np.array([[0, 1], [1, 4], [0, 2], [0, 4], [1, 3], [2, 0], [2, 4], [3, 4], [3, 2], [3, 2]])
+A2 = np.array([[0, 1, 0, 0, 0, 0, 0, 0],
+               [0, 0, 1, 0, 0, 0, 0, 0],
+               [1, 0, 0, 1, 0, 1, 1, 0],
+               [0, 0, 0, 0, 1, 1, 0, 0],
+               [1, 0, 1, 0, 0, 0, 0, 0],
+               [1, 0, 0, 0, 0, 0, 0, 0],
+               [0, 0, 0, 0, 0, 1, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0]])
+P = np.array([[0, 1, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [1 / 4, 0, 0, 1 / 4, 0, 1 / 4, 1 / 4, 0],
+              [0, 0, 0, 0, 1 / 2, 1 / 2, 0, 0], [1 / 2, 0, 1 / 2, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 1 / 2, 0, 1 / 2], [1, 0, 0, 0, 0, 0, 0, 0]])
+E2 = np.array(
+    [[0, 1], [1, 2], [2, 0], [2, 3], [2, 5], [2, 6], [3, 5], [3, 4], [4, 2], [4, 0], [5, 0], [6, 5], [6, 7], [7, 0]])
 
 
-def adj_matrix(n,edge_list):
+def adj_matrix(n, edge_list):
     """
     PROBLEM 1
     Write a function that takes in a number n and an edge list and returns the adjacency matrix of the graph.
@@ -70,7 +71,7 @@ def adj_matrix(n,edge_list):
     return adj.astype(int)
 
 
-def degree_cent(n,edge_list):
+def degree_cent(n, edge_list):
     """
     Problem 2
 
@@ -133,7 +134,7 @@ def stoch_mat(A):
     return stochastic_matrix
 
 
-def stoch_eig(P,k): # TODO: Fix this function
+def stoch_eig(P, k):
     """
     Problem 5
 
@@ -144,32 +145,23 @@ def stoch_eig(P,k): # TODO: Fix this function
     >>> stoch_eig(P, 100)
     array([0.22727273, 0.22727273, 0.24242424, 0.06060606, 0.03030303,
     0.12121212, 0.06060606, 0.03030303])
+    >>> p = np.array([[0., 0., 0., 0., 0.], [0.6,        0.,         0.33333333, 0.,         0.], [0.,         0.,         0.33333333, 1.,         0.        ], [0.2,        1.,         0.,         0.,         0.5,       ], [0.2,        0.,         0.33333333, 0.,         0.5       ]])
+    >>> stoch_eig(p, 10)
+    [0.         0.1280154  0.37403103 0.24628906 0.25166451]
     """
-    n = P.shape[0]  # Get the size of the matrix (assuming it's square)
+    n = len(P)
 
-    # Initialize an initial guess for the eigenvector
-    x = np.ones(n) / n
+    X0 = np.ones(n) / n
 
-    # Perform power iteration for k iterations
-    for _ in range(k):
-        x = P @ x  # Multiply P by the current eigenvector estimate
+    for i in range(k):
+        X0 = np.dot(P, X0)
 
-    # Normalize the resulting eigenvector
-    x /= np.linalg.norm(x)
-
-    return x
+    return X0
 
 
-def PageRank_cent(n,edge_list,k): # TODO: Fix this function
+def PageRank_cent(n, edge_list, k):  # TODO: Fix this function
     """
     Problem 6
-
-    Define a function called PageRank_cent(n,edge_list,k) which accepts as input a number of vertices n, a list of edges edge_list (which is formatted as a 2-dimensional NumPy array as in Problem 1), and an iteration number k, and performs the following:
-
-Creates the adjacency matrix A of the network with n vertices and edges in edge_list,
-Creates the stochastic matrix P corresponding to the adjacency matrix A (you may assume here that none of rows of A sum to zero),
-Approximates the dominant eigenvector of P after k iterations.
-Your function should return the approximation of the dominant eigenvector after k iterations (formatted as a 1-dimensional NumPy array).
     :param n: number of vertices
     :param edge_list:
     :param k:
@@ -179,27 +171,22 @@ Your function should return the approximation of the dominant eigenvector after 
     array([0.22727273, 0.22727273, 0.24242424, 0.06060606, 0.03030303,
     0.12121212, 0.06060606, 0.03030303])
     """
+    # Step 1: Create the adjacency matrix from the edge list
     A = adj_matrix(n, edge_list)
 
-    # Create the stochastic matrix P
-    row_sums = A.sum(axis=1)
-    P = A / row_sums[:, np.newaxis]  # Normalize rows to make it stochastic
+    # Step 2: Convert the adjacency matrix to a stochastic matrix
+    P = stoch_mat(A)
 
-    # Approximate the dominant eigenvector of P after k iterations
-    eigenvector = stoch_eig(P, k)
+    # Step 3: Use the power iteration (stoch_eig) to approximate the dominant eigenvector
+    dominant_eigenvector = stoch_eig(P, k)
 
-    return eigenvector
+    return dominant_eigenvector
 
 
-"""**Problem 7**""" # TODO: fix this answer
+"""**Problem 7**"""  # TODO: fix this answer
 
-page_rank = PageRank_cent(len(webpage_data), webpage_data, 100)
+page_rank = PageRank_cent(499, webpage_data, 100)
 
-top_PageRank = max(page_rank)
+page_rank = np.flip(page_rank.argsort(), 0)
 
-"""**STOP!  BEFORE YOU SUBMIT THIS LAB:**  Go to the "Runtime" menu at the top of this page, and select "Restart and run all".  If any of the cells produce error messages, you will either need to fix the error(s) or delete the code that is causing the error(s).  Then use "Restart and run all" again to see if there are any new errors.  Repeat this until no new error messages show up.
-
-**You are not ready to submit until you are able to select "Restart and run all" without any new error messages showing up.  Your code will not be able to be graded if there are any error messages.**
-
-To submit your lab for grading you must first download it to your compute as .py file. In the "File" menu select "Download .py". The resulting file can then be uploaded to http://www.math.byu.edu:30000 for grading.
-"""
+top_PageRank = page_rank[0]
