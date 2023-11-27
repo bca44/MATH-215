@@ -10,7 +10,7 @@ import pandas as pd
 
 
 """**Downloading dataset**"""
-df = pd.read_csv('Lab11data.csv', header=None)
+df = pd.read_csv('lab_11_data.csv', header=None)
 X_neg = df.loc[df[100] == 0].drop(columns=100).values.transpose()
 X_pos = df.loc[df[100] == 1].drop(columns=100).values.transpose()
 X_total = df.loc[df[100] >= 0].drop(columns=100).values.transpose()
